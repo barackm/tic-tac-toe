@@ -1,11 +1,17 @@
 $records = ["","","","","","","","","",]
 
 class GameLogic
+    attr_reader :records
+    def initialize(records)
+        @records = records
+    end
+
     def rows
         array = []
-        $records.each_slice(3) do |x,y,z|
+        @records.each_slice(3) do |x,y,z|
             array.push([x,y,z])
         end
+
         result = { condition: false }
     
         array.each do |row|
@@ -24,7 +30,7 @@ class GameLogic
     
     def columns
         array = []
-        $records.each_slice(3) do |x,y,z|
+        @records.each_slice(3) do |x,y,z|
             array.push([x,y,z])
         end
         result = { condition: false }
@@ -56,7 +62,7 @@ class GameLogic
     
     def diagonals
         array = []
-        $records.each_slice(3) do |x,y,z|
+        @records.each_slice(3) do |x,y,z|
             array.push([x,y,z])
         end
 
@@ -91,7 +97,7 @@ class GameLogic
 end
 
 class Validation
-    attr_writer :player_input, :saved_records
+    attr_reader :player_input, :saved_records
     def initialize(player_input, saved_records)
         @player_input = player_input.to_i
         @saved_records = saved_records
@@ -127,7 +133,7 @@ end
 
 class Score
     def get_winner
-        @game = GameLogic.new
+        @game = GameLogic.new($records)
         winner = false
         @my_results = [@game.rows(), @game.columns(), @game.diagonals()]
 
@@ -146,4 +152,3 @@ class Score
         result
     end
 end
-
