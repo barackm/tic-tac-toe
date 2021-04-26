@@ -1,4 +1,4 @@
-$records = ["","","","","","","","","",]
+$records = ["","","","","","","","",""]
 
 class GameLogic
     attr_reader :records
