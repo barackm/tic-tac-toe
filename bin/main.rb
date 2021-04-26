@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require_relative "../lib/game_logic.rb"
+require_relative "../lib/validation.rb"
 
 game_cells = ["1","2","3","4","5","6","7","8","9"]
 
@@ -149,5 +150,3 @@ def play_game(game_cells, game_players)
 end
 
 play_game(game_cells, game_players,)
-
-
